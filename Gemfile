@@ -31,3 +31,6 @@ end
 group :production do
   gem 'pg', '0.20.0'
 end
+
+# heroku
+# https://evening-shore-48780.herokuapp.com/
