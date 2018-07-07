@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  attr_accessor :remember_token
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -15,4 +16,30 @@ class User < ApplicationRecord
   end
 
 
+  def User.new_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def remember
+    self.remember_token = User.new_token
+    self.update_attribute(:remember_digest, User.digest(remember_token))
+  end
+
+  def authenticated?(remember_token)
+    return failse if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  def forget
+    update_attribute(:remember_digest, nil)
+  end
+
 end
+
+
+# ◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆
+# # def User.new_token => これはクラスメソッド
+# # def remember => これはインスタンスメソッド
+# rememberメソッドはインスタンスに対するメソッド
+# （＝メソッドを動かす相手(userインスタンス)が必要。）
+# new_tokenは別に動かす際に相手は不要。
