@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
+
   get 'topics/new'
 
   get 'topisc/new'
-=======
-  get 'graves/new'
->>>>>>> 749485075a839f35ca59e2c179f6bbfd74983109
+
 
   # get 'sessions/new'
 
@@ -20,10 +18,7 @@ Rails.application.routes.draw do
   post '/login', to:'sessions#create'
   delete '/logout', to:'sessions#destroy'
   resources :users
-<<<<<<< HEAD
   resources :topics
-=======
-  resources :graves
->>>>>>> 749485075a839f35ca59e2c179f6bbfd74983109
+
 
 end
