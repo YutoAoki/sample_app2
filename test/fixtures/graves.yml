@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  grave_search_id: MyString
+  grave_name: MyString
+  grave_image: MyString
+  meinichi: 2018-07-08 16:58:23
+  religion: MyString
+  string: MyString
+  grave_comment: MyString
+  user_id: 1
+
+two:
+  grave_search_id: MyString
+  grave_name: MyString
+  grave_image: MyString
+  meinichi: 2018-07-08 16:58:23
+  religion: MyString
+  string: MyString
+  grave_comment: MyString
+  user_id: 1
