@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180707062622) do
+ActiveRecord::Schema.define(version: 20180708075823) do
+
+  create_table "graves", force: :cascade do |t|
+    t.string "grave_search_id"
+    t.string "grave_name"
+    t.string "grave_image"
+    t.datetime "meinichi"
+    t.string "religion"
+    t.string "string"
+    t.string "grave_comment"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
