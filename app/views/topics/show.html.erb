@@ -1,0 +1,14 @@
+<h1>墓ページ</h1>
+
+
+<h1><%= @topic.topic_name %></p>
+
+<%= image_tag @topic.topic_image %>
+
+<h1><%= @topic.topic_bio %></h1>
+
+
+<p>墓を探すID：<%= @topic.topic_search_id %></p>
+
+
+<p>このお墓の管理者：<%= link_to @owner.name, user_path(@owner) %></p>

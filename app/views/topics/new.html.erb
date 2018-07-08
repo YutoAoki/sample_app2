@@ -1,0 +1,25 @@
+<% provide(:title, "新規お墓登録") %>
+<h1>新規お墓登録</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @topic do |f| %>
+      <!-- <%#= render 'shared/error_messages' %> -->
+
+      <%= f.label :topic_name, "お墓の名前" %>
+      <%= f.text_field :topic_name, class: 'form-control' %>
+
+      <%= f.label :topic_search_id, " お墓のID（英数字）" %>
+      <%= f.text_field :topic_search_id, class: 'form-control' %>
+
+      <%= f.label :topic_image, "お墓の写真(遺影)" %>
+      <%= f.file_field :topic_image, class: 'form-group' %>
+
+      <%= f.label :topic_bio, " お墓の説明" %>
+      <%= f.text_area :topic_bio, class: 'form-control' %>
+
+      <%= f.submit "新規お墓登録", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+</div>
