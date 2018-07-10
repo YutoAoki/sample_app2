@@ -17,6 +17,10 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find_by(id: params[:id])
     @owner = User.find_by(id: @topic.user_id)
+    @miles = Mile.where(topic_id: params[:id])
+    # @miles = Mile.find_by(topic_id: params[:id])
+    # https://qiita.com/tsuchinoko_run/items/f3926caaec461cfa1ca3
+    # find_byは最初の一つしか取り出さないので、each文でエラーになる。whereで配列として取り出す必要がある「。
   end
 
   private

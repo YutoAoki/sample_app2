@@ -10,6 +10,8 @@ class Topic < ApplicationRecord
             uniqueness: { case_sensitive: false }
 
   validates :topic_image, presence: true
+  has_many :miles
+  # has_many :mile_users, through: :miles, sourse: 'user'
 end
 
 # validates :email, presence: true, length: { maximum: 255 },

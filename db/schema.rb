@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20180708101548) do
-=======
-ActiveRecord::Schema.define(version: 20180708075823) do
->>>>>>> 749485075a839f35ca59e2c179f6bbfd74983109
+ActiveRecord::Schema.define(version: 20180710140820) do
 
   create_table "graves", force: :cascade do |t|
     t.string "grave_search_id"
@@ -22,16 +18,18 @@ ActiveRecord::Schema.define(version: 20180708075823) do
     t.string "grave_image"
     t.datetime "meinichi"
     t.string "religion"
-<<<<<<< HEAD
-=======
-    t.string "string"
->>>>>>> 749485075a839f35ca59e2c179f6bbfd74983109
     t.string "grave_comment"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-<<<<<<< HEAD
+
+  create_table "miles", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "topics", force: :cascade do |t|
     t.integer "user_id"
@@ -43,8 +41,6 @@ ActiveRecord::Schema.define(version: 20180708075823) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-=======
->>>>>>> 749485075a839f35ca59e2c179f6bbfd74983109
 
   create_table "users", force: :cascade do |t|
     t.string "name"
