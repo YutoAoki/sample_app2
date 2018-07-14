@@ -10,7 +10,7 @@
 
       <% if !@miles.nil? %>
         <% @miles.each do |mile| %>
-          <p><%= mile.created_at %><%= mile.user.name %>さんがお墓参りをしました。</p>
+          <p><%= mile.created_at.to_s %><br><%= mile.user.name %>さんがお墓参りをしました。</p>
         <% end %>
       <% end %>
 
