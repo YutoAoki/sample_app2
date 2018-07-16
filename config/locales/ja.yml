@@ -8,3 +8,13 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: 確認用パスワード
+
+  activerecord:
+    models:
+      topic: お墓
+    attributes:
+      topic:
+        topic_name: お墓の名前
+        topic_search_id: お墓のID
+        topic_image: お墓の写真
+        topic_bio: お墓の説明

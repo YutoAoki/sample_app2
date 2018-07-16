@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :logged_in_user, only: [:create, :new]
+
   def new
   end
 
@@ -19,4 +21,13 @@ class SessionsController < ApplicationController
     log_out if logged_in?
     redirect_to root_path
   end
+
+  private
+    def logged_in_user
+      if logged_in?
+        flash[:danger] = "すでにログインしています。"
+        redirect_to user_path(current_user)
+      end
+    end
+
 end

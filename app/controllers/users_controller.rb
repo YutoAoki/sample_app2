@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  before_action :new_user, only: [:new, :create]
 
   def new
     @user = User.new
@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @topics = @user.topics
   end
 
   def create
@@ -25,6 +26,13 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
+    end
+
+    def new_user
+      if logged_in?
+        flash[:danger] = "すでにログインしています。"
+        redirect_to user_path(current_user)
+      end
     end
 
 end

@@ -1,5 +1,13 @@
 <%= provide(:title, @user.name) %>
-<h1>
-  <%= gravatar_for @user %>
-  <%= @user.name %>
-</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>あなたのお名前: <%= @user.name %></h1>
+
+    <h3>あなたが管理しているお墓</h3>
+    <% @topics.each do |topic| %>
+      <ul>
+        <li><%= link_to "#{topic.topic_name}", topic_path(topic.id) %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>
