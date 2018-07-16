@@ -1,4 +1,6 @@
 class MilesController < ApplicationController
+  before_action :logged_in_user, only: [:create]
+
   def create
     mile = Mile.new
     mile.user_id = current_user.id
@@ -10,6 +12,14 @@ class MilesController < ApplicationController
       flash.now[:danger] = "お参りをやり直してください。"
       render :show
     end
-
   end
+
+  private
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = "ログインしてください。"
+        redirect_to login_path
+      end
+    end
+
 end

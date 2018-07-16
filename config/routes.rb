@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :users
   resources :topics
   post '/miles', to: 'miles#create'
+  get '/index', to: 'topics#index'
 
 
 end

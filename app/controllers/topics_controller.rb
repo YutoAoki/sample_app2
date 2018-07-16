@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+  before_action :logged_in_user, only: [:new, :create, :index, :show]
+
   def new
     @topic = Topic.new
   end
@@ -23,12 +25,35 @@ class TopicsController < ApplicationController
     # find_byは最初の一つしか取り出さないので、each文でエラーになる。whereで配列として取り出す必要がある「。
   end
 
+  def index
+    # @search = Topic.ransack(params[:q])
+    # @search = nil unless params[:q]
+    #
+    # @search.any?
+    # @result = @search.result
+    # https://stackoverflow.com/questions/22159426/ransack-start-with-blank-index-no-results
+    if params[:q] && params[:q].reject { |k, v| v.nil? }.present?
+      # {"utf8"=>"✓", "q"=>{"topic_search_id_eq"=>"jimihen"}, "commit"=>"お墓を探す"}
+      @search = Topic.search(params[:q])
+      @result = @search.result
+    else
+      @search = Topic.search
+      @result = []
+    end
+
+  end
+
   private
     def topic_params
         params.require(:topic).permit(:topic_name, :topic_search_id,
                                       :topic_image, :topic_bio)
+    end
 
-
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = "ログインしてください。"
+        redirect_to login_path
+      end
     end
 
 

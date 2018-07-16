@@ -12,6 +12,7 @@ gem 'jbuilder',     '2.7.0'
 gem 'bootstrap-sass', '3.3.7'
 gem 'rails-i18n'
 gem 'carrierwave'
+gem 'ransack'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
