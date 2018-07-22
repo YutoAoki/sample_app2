@@ -4,10 +4,15 @@
     <h1>あなたのお名前: <%= @user.name %></h1>
 
     <h3>あなたが管理しているお墓</h3>
-    <% @topics.each do |topic| %>
-      <ul>
-        <li><%= link_to "#{topic.topic_name}", topic_path(topic.id) %></li>
-      </ul>
-    <% end %>
+      <% if @topics.any? %>
+        <% @topics.each do |topic| %>
+          <ul>
+            <li><%= link_to "#{topic.topic_name}", topic_path(topic.id) %></li>
+          </ul>
+        <% end %>
+
+      <% else %>
+        <p>管理しているお墓はありません。</p>
+      <% end %>
   </div>
 </div>

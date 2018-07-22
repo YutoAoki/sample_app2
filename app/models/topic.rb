@@ -11,6 +11,7 @@ class Topic < ApplicationRecord
 
   validates :topic_image, presence: true
   has_many :miles
+  has_many :relationships
   # has_many :mile_users, through: :miles, sourse: 'user'
 end
 

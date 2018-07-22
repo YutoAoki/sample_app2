@@ -1,5 +1,17 @@
 <% provide(:title, "お墓") %>
 <h4>お墓ページ</h4>
+
+<% if your_status? %>
+  <% if your_status.status == 0 %>
+    <h4>あなたはこのお墓の管理者です。</h4>
+  <% elsif your_status.status == 1 %>
+    <h4>あなたはこのお墓の訪問者です。</h4>
+  <% end %>
+<% else %>
+  <h4>あなたはこのお墓に入る権限がないです。</h4>
+<% end %>
+
+
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <h1><%= @topic.topic_name %></p>
@@ -16,7 +28,6 @@
 
       <p>墓を探すID：<%= @topic.topic_search_id %></p>
       <p>このお墓の管理者：<%= link_to @owner.name, user_path(@owner) %></p>
-
     </div>
 
 </div>

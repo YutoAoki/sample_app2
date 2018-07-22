@@ -8,8 +8,10 @@ class TopicsController < ApplicationController
   def create
     @topic = current_user.topics.new(topic_params)
     if @topic.save
+      new_relationship(@topic.id)
       flash[:success] = "お墓の新規登録が完了しました。"
       redirect_to topic_path(@topic)
+
     else
       flash.now[:danger] = "お墓の新規登録に失敗しました。"
       render :new
@@ -54,6 +56,11 @@ class TopicsController < ApplicationController
         flash[:danger] = "ログインしてください。"
         redirect_to login_path
       end
+    end
+
+    def new_relationship(relation_topic_id)
+      @relationship = Relationship.new(user_id: current_user.id, topic_id: relation_topic_id ,status: 0)
+      @relationship.save
     end
 
 

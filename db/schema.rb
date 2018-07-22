@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180710140820) do
+ActiveRecord::Schema.define(version: 20180721073347) do
 
   create_table "graves", force: :cascade do |t|
     t.string "grave_search_id"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20180710140820) do
     t.integer "topic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "topic_id"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "topic_id"], name: "index_relationships_on_user_id_and_topic_id", unique: true
   end
 
   create_table "topics", force: :cascade do |t|
