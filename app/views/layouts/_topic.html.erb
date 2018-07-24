@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1><%= @topic.topic_name %></p>
+      <%= image_tag @topic.topic_image %>
+      <h4><%= @topic.topic_bio %></h4>
+      <%= link_to "お墓参りをする", miles_path(topic_id: @topic.id), method: :post, class: "btn btn-primary center-block" %>
+
+
+      <% if !@miles.nil? %>
+        <% @miles.each do |mile| %>
+          <p><%= mile.created_at.to_s %><br><%= mile.user.name %>さんがお墓参りをしました。</p>
+        <% end %>
+      <% end %>
+
+      <p>墓を探すID：<%= @topic.topic_search_id %></p>
+      <p>このお墓の管理者：<%= link_to @owner.name, user_path(@owner) %></p>
+    </div>
+
+</div>

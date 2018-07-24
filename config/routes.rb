@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   delete '/logout', to:'sessions#destroy'
   resources :users
   resources :topics
+  resources :relationships
   post '/miles', to: 'miles#create'
   # get 'topics/index', to: 'topics#index'
 
