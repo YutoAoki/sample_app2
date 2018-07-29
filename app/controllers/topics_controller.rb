@@ -59,8 +59,9 @@ class TopicsController < ApplicationController
     end
 
     def new_relationship(relation_topic_id)
-      @relationship = Relationship.new(user_id: current_user.id, topic_id: relation_topic_id ,status: 0)
+      @relationship = Relationship.new(user_id: current_user.id, topic_id: relation_topic_id ,status: 0, owner_id: current_user.id)
       @relationship.save
+
     end
 
 

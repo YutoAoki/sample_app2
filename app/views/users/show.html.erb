@@ -14,5 +14,15 @@
       <% else %>
         <p>管理しているお墓はありません。</p>
       <% end %>
+
+    <h3>未承認のユーザー</h3>
+      <% @non_approved.each do |non| %>
+        <p>お墓登録申請者名：<%= non.user.name %></p>
+        <%= link_to "#{non.topic.topic_name}への訪問登録申請を承認する",relationship_path(topic_id: non.topic_id, user_id: non.user_id), method: :patch, class: "btn btn-primary" %>
+      <% end %>
+
+
   </div>
 </div>
+<%#= f.submit "ログイン", class: 'btn btn-primary' %>
+<%#= link_to "お墓参りをする", miles_path(topic_id: @topic.id), method: :post, class: "btn btn-primary center-block" %>

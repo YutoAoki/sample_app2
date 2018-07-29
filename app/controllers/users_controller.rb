@@ -9,8 +9,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @topics = @user.topics
 
-    @non = Relationship.where(user_id: current_user.id).topics
-    a
+    # @non = Relationship.where(user_id: current_user.id).topics
+    # @non_approved = Relationship.find_by_topic_id_and_owner_id(21, 2)
+    # @non_approved = Relationship.find_by_owner_id_and_status(current_user.id, 2).topic
+    @non_approved = Relationship.where(["owner_id = ? and status = ?", current_user.id, 2])
   end
 
   def create
