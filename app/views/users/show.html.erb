@@ -5,22 +5,32 @@
 
     <h3>あなたが管理しているお墓</h3>
       <% if @topics.any? %>
+      <p><%= @topics.count %>件のお墓を管理しています。</p>
         <% @topics.each do |topic| %>
           <ul>
-            <li><%= link_to "#{topic.topic_name}", topic_path(topic.id) %></li>
+            <li><%= link_to "#{topic.topic_name}", topic_path(topic.id) %>（お墓登録者数：<%= topic.relationships.where(status: 1).count %>人）</li>
           </ul>
         <% end %>
 
       <% else %>
         <p>管理しているお墓はありません。</p>
+        <%= link_to "お墓を作成する", new_topic_path, class: "btn btn-primary" %>
       <% end %>
 
     <h3>未承認のユーザー</h3>
     <% if @non_approved.any? %>
+    <p><%= @non_approved.count %>件のお墓登録申請があります。</p>
+    <p>下記のユーザーがあなたの管理しているお墓訪問者申請をしています。</p>
+    <p>承認ボタンをクリックし、お墓への訪問を承認してください。</p>
       <% @non_approved.each do |non| %>
-        <p>お墓登録申請者名：<%= non.user.name %></p>
-        <%= link_to "#{non.topic.topic_name}への訪問登録申請を承認する",relationship_path(topic_id: non.topic_id, user_id: non.user_id), method: :patch, class: "btn btn-primary" %>
+        <p>お墓登録申請者名：<%= non.user.name %>さん</p>
+        <%= link_to "#{non.topic.topic_name}へのお墓訪問登録申請を承認する",relationship_path(topic_id: non.topic_id, user_id: non.user_id), method: :patch, class: "btn btn-primary" %>
+        <%= link_to "#{non.topic.topic_name}へのお墓訪問登録申請を却下する",relationship_path(topic_id: non.topic_id, user_id: non.user_id), method: :delete, class: "btn btn-danger" %>
+        <hr size="10"></hr>
       <% end %>
+
+    <% else %>
+    <p>お墓登録者申請はありません。</p>
     <% end %>
 
 

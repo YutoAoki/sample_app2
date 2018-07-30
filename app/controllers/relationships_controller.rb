@@ -18,13 +18,18 @@ class RelationshipsController < ApplicationController
   def update
     @relationship = Relationship.find_by_user_id_and_topic_id(params[:user_id], params[:topic_id])
     @relationship.status = 1
-    # @relationship.attributes = { status: 1 }
     @relationship.save
-    redirect_to root_path
-
-    # SQLite3::BusyException: database is locked: UPDATE "relationships" SET "status" = ?, "updated_at" = ? WHERE "relationships"."id" = ?
-
+    flash[:success] = "#{@relationship.user.name}さんのお墓訪問申請を承認しました。"
+    redirect_to user_path(current_user)
   end
+
+  def destroy
+    @relationship = Relationship.find_by_user_id_and_topic_id(params[:user_id], params[:topic_id])
+    @relationship.delete
+    flash[:danger] = "#{@relationship.user.name}さんのお墓訪問申請を却下しました。"
+    redirect_to user_path(current_user)
+  end
+
 
   # def create
   #   mile = Mile.new

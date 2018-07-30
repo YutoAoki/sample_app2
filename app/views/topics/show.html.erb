@@ -14,5 +14,5 @@
   <% end %>
 <% else %>
   <h4>あなたはこのお墓に入る権限がないです。</h4>
-  <%= link_to "お墓訪問者登録申請", relationships_path(topic_id: @topic.id, user_id: current_user.id, status: 2), method: :post,  class: "btn btn-primary" %>
+  <%= link_to "お墓訪問者登録申請", relationships_path(topic_id: @topic.id, user_id: current_user.id), method: :post,  class: "btn btn-primary" %>
 <% end %>
