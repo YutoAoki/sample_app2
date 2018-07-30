@@ -1,22 +1,30 @@
 <%= provide(:title, @user.name) %>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <h1>あなたのお名前: <%= @user.name %></h1>
-
+    <h1><%= @user.name %>さん、こんにちは。</h1>
+    <h3>お墓参りをしましょう。</h3>
+      <% if @approved.any? %>
+      <p><%= @approved.count %>件のお墓に登録しています。</p>
+        <% @approved.each do |app| %>
+          <p><%= link_to app.topic.topic_name, topic_path(app.topic_id) %></p>
+        <% end %>
+      <% else %>
+        <p>お墓を検索しましょう。</p>
+        <%= link_to "お墓を検索",topics_path, class: "btn btn-primary" %>
+      <% end %>
+    <hr>
     <h3>あなたが管理しているお墓</h3>
       <% if @topics.any? %>
       <p><%= @topics.count %>件のお墓を管理しています。</p>
         <% @topics.each do |topic| %>
-          <ul>
-            <li><%= link_to "#{topic.topic_name}", topic_path(topic.id) %>（お墓登録者数：<%= topic.relationships.where(status: 1).count %>人）</li>
-          </ul>
+            <p><%= link_to "#{topic.topic_name}", topic_path(topic.id) %>（お墓登録者数：<%= topic.relationships.where(status: 1).count %>人）</p>
         <% end %>
 
       <% else %>
         <p>管理しているお墓はありません。</p>
         <%= link_to "お墓を作成する", new_topic_path, class: "btn btn-primary" %>
       <% end %>
-
+      <hr>
     <h3>未承認のユーザー</h3>
     <% if @non_approved.any? %>
     <p><%= @non_approved.count %>件のお墓登録申請があります。</p>

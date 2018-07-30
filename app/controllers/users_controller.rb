@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     # @non_approved = Relationship.find_by_topic_id_and_owner_id(21, 2)
     # @non_approved = Relationship.find_by_owner_id_and_status(current_user.id, 2).topic
     @non_approved = Relationship.where(["owner_id = ? and status = ?", current_user.id, 2])
+    @approved = Relationship.where(["user_id = ? and status = ?", current_user.id, 1])
   end
 
   def create
