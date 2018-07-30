@@ -14,6 +14,10 @@ class MilesController < ApplicationController
     end
   end
 
+  def show
+    @miles = Mile.where(topic_id: params[:id])
+  end
+
   private
     def logged_in_user
       unless logged_in?

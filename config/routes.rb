@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :topics
   resources :relationships
   post '/miles', to: 'miles#create'
+  get '/miles', to: 'miles#show'
+  # resources :miles
   # get 'topics/index', to: 'topics#index'
 
 

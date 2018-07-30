@@ -11,6 +11,7 @@
           <p><%= mile.created_at.to_s %><br><%= mile.user.name %>さんがお墓参りをしました。</p>
         <% end %>
       <% end %>
+      <p><%= link_to "過去のお墓参りを全て見る", miles_path(id: @topic.id), method: :get %></p>
 
       <p>墓を探すID：<%= @topic.topic_search_id %></p>
       <p>このお墓の管理者：<%= link_to @owner.name, user_path(@owner) %></p>
