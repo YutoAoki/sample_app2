@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :topics
   has_many :miles
   has_many :relationships
+  has_many :comments
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

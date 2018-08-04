@@ -1,0 +1,15 @@
+<% provide(:title, "記帳一覧") %>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <% if @comments.any? %>
+      <%= will_paginate %>
+        <% @comments.each do |comment| %>
+          <hr>
+          <p><%= comment.user.name %>さんの記帳  （ 記帳日時：<%= comment.created_at.to_s %> ）</p>
+          <p><%= comment.contents %></p>
+        <% end %>
+      <%= will_paginate %>
+    <% end %>
+  </div>
+</div>

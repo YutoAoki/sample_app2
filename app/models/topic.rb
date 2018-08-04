@@ -1,5 +1,6 @@
 class Topic < ApplicationRecord
   belongs_to :user
+  has_many :comments
   mount_uploader :topic_image, ImageUploader
 
 

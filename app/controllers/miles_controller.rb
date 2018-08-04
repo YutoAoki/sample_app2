@@ -15,7 +15,10 @@ class MilesController < ApplicationController
   end
 
   def show
-    @miles = Mile.where(topic_id: params[:id])
+    @miles_where = Mile.where(topic_id: params[:id])
+    @miles = @miles_where.paginate(page: params[:page], per_page: 10)
+    
+
   end
 
   private

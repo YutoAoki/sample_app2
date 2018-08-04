@@ -1,0 +1,20 @@
+<% provide(:title, "記帳") %>
+<h1>記帳</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @comment do |f| %>
+      <!-- <%#= render 'shared/error_messages' %> -->
+      <!-- <%#= render 'shared/comments_error_messages' %> -->
+
+      <%= f.label :contents, " 記帳" %>
+      <%= f.text_area :contents, class: 'form-control' %>
+
+      <!-- <%#= f.label :comment_image, "写真を添付する" %> -->
+      <!-- <%#= f.file_field :comment_image, class: 'form-group' %> -->
+      <%= hidden_field_tag(:id, params[:id]) %>
+      <%= f.submit "記帳する", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+</div>

@@ -12,7 +12,21 @@
         <% end %>
       <% end %>
       <p><%= link_to "過去のお墓参りを全て見る", miles_path(id: @topic.id), method: :get %></p>
+      <hr>
 
+      <%= link_to "記帳をする", new_comment_path(id: @topic.id), class: "btn btn-primary center-block" %><br>
+      <% if @comments.any? %>
+        <% @comments.each do |comment| %>
+          <hr>
+          <p><%= comment.user.name %>さんの記帳  （ 記帳日時：<%= comment.created_at.to_s %> ）</p>
+          <p><%= comment.contents %></p>
+        <% end %>
+        <p><%= link_to "過去の記帳を全て見る", comment_path(id: @topic.id) %></p>
+      <% else %>
+        <p>まだ記帳がありません。</p>
+      <% end %>
+
+      <hr>
       <p>墓を探すID：<%= @topic.topic_search_id %></p>
       <p>このお墓の管理者：<%= link_to @owner.name, user_path(@owner) %></p>
     </div>

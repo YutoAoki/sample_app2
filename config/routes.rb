@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'comments/new'
+
   get 'topics/new'
 
   get 'topisc/new'
@@ -20,6 +22,7 @@ Rails.application.routes.draw do
   resources :users
   resources :topics
   resources :relationships
+  resources :comments
   post '/miles', to: 'miles#create'
   get '/miles', to: 'miles#show'
   # resources :miles
