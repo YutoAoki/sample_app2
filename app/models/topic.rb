@@ -13,7 +13,13 @@ class Topic < ApplicationRecord
   validates :topic_image, presence: true
   has_many :miles
   has_many :relationships
+  validates :picture_size
   # has_many :mile_users, through: :miles, sourse: 'user'
+  private
+    def picture_size
+      
+    end
+
 end
 
 # validates :email, presence: true, length: { maximum: 255 },
