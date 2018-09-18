@@ -13,11 +13,13 @@ class Topic < ApplicationRecord
   validates :topic_image, presence: true
   has_many :miles
   has_many :relationships
-  validates :picture_size
+  validate :picture_size
   # has_many :mile_users, through: :miles, sourse: 'user'
   private
     def picture_size
-      
+      if topic_image.size > 3.megabytes
+        errors.add(:topic_image, "画像サイズが大きすぎます。3MB以下の画像に変更してください。")
+      end
     end
 
 end
