@@ -1,7 +1,7 @@
 <% provide(:title, "お墓参り一覧") %>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6 col-md-offset-3 col-xs-12">
     <% if !@miles.nil? %>
       <%= will_paginate %>
         <% @miles.each do |mile| %>
