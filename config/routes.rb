@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :comments
   post '/miles', to: 'miles#create'
   get '/miles', to: 'miles#show'
+  get 'admin_topic_users/:id', to: "topics#users_index"
   # resources :miles
   # get 'topics/index', to: 'topics#index'
 

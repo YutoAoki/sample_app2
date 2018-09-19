@@ -19,6 +19,7 @@
         <% @topics.each do |topic| %>
             <p><%= link_to "#{topic.topic_name}", topic_path(topic.id) %>（お墓登録者数：<%= topic.relationships.where(status: 1).count %>人）</p>
         <% end %>
+        <p><%= link_to "お墓を作成する", topics_new_path %>
 
       <% else %>
         <p>管理しているお墓はありません。</p>

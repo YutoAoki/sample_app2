@@ -1,0 +1,13 @@
+<% provide(:title, "お墓訪問者一覧") %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>お墓登録ユーザー一覧</h1>
+    <hr>
+    <% @topic_users.each do |user| %>
+      <p>登録者名：<%= user.name %></p>
+
+      <hr>
+    <% end %>
+    <%= link_to "お墓ページに戻る", topic_path(@topic) %>
+  </div>
+</div>

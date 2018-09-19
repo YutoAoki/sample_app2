@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :index, :show]
+  before_action :owner_user, only: [:edit, :update, :users_index]
 
   def new
     @topic = Topic.new
@@ -47,6 +48,25 @@ class TopicsController < ApplicationController
 
   end
 
+  def edit
+    # @topic = Topic.find(params[:id])
+  end
+
+  def update
+    @topic = Topic.find(params[:id])
+    if @topic.update_attributes(topic_params)
+      flash[:success] = "お墓の更新に成功しました。"
+      redirect_to @topic
+    else
+      render 'edit'
+    end
+  end
+
+  def users_index
+    @topic = Topic.find(params[:id])
+    @topic_users = Topic.find(params[:id]).users
+  end
+
   private
     def topic_params
         params.require(:topic).permit(:topic_name, :topic_search_id,
@@ -63,7 +83,14 @@ class TopicsController < ApplicationController
     def new_relationship(relation_topic_id)
       @relationship = Relationship.new(user_id: current_user.id, topic_id: relation_topic_id ,status: 0, owner_id: current_user.id)
       @relationship.save
+    end
 
+    def owner_user
+      @topic = Topic.find(params[:id])
+      unless @topic.user_id == current_user.id
+        flash[:danger] = "管理者のみが入れます。"
+        redirect_to user_path(current_user)
+      end
     end
 
 
