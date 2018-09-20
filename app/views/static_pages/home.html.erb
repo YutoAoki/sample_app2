@@ -2,9 +2,9 @@
   <div class="container top-hero-container">
     <div class="row">
       <div class="col-md-12">
-        <h1>HAKAMILEへようこそ</h1>
+        <h1 id="main-title">HAKAMILEへようこそ</h1>
 
-        <h2>「HAKAMILE」はオンライン墓地のウェブサービスです。</h2>
+        <h2 id="sub-title">「HAKAMILE」はオンライン墓地のウェブサービスです。</h2>
 
         <% if logged_in? %>
           <%= link_to "MyPageへ", user_path(current_user), class: "btn btn-lg btn-primary" %>
@@ -17,3 +17,12 @@
 
   </div>
 </div>
+
+<script>
+  // $("#main-title").css("color","red");
+
+  $(function() {
+    $('#main-title').fadeIn(1500);
+    $('#sub-title').fadeIn(1500);
+  });
+</script>
