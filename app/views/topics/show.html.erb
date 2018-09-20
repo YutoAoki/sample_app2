@@ -7,7 +7,8 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <p><%= link_to "お墓の編集をする（管理者のみ）", edit_topic_path(@topic) %></p>
-        <p><%= link_to "お墓登録者の一覧をみる（管理者のみ）", :controller => "topics", :action => "users_index" %></p>
+        <p><%= link_to "お墓登録者の一覧をみる（管理者のみ）", topic_users_path(@topic) %></p>
+        <!-- :controller => "topics", :action => "users_index" -->
 
       </div>
     </div>
