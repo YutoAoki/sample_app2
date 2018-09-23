@@ -20,6 +20,7 @@ class TopicsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
     @topic = Topic.find_by(id: params[:id])
     @owner = User.find_by(id: @topic.user_id)
     @miles = Mile.where(topic_id: params[:id]).limit(10)

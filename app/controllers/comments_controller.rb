@@ -10,8 +10,9 @@ class CommentsController < ApplicationController
       flash[:success] = "記帳の投稿が完了しました。"
       redirect_to topic_path(params[:id])
     else
-      flash.now[:danger] = "記帳の投稿に失敗しました。"
-      render :new
+      flash[:danger] = "記帳の投稿に失敗しました。"
+      # render :show
+      redirect_to topic_path(params[:id])
     end
   end
 
