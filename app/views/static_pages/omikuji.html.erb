@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>おみくじ</title>
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <style>
+      body {
+        background: #efefef;
+      }
+
+      #btn-omikuji {
+        margin: 30px auto 0;
+        width: 800px;
+        height: 800px;
+        border-radius: 50%;
+        background: #EF454A;
+        text-align: center;
+        line-height: 800px;
+        color: #fff;
+        font-size: 42px;
+        font-weight: bold;
+        cursor: pointer;
+        opacity: 0.9;
+        box-shadow: 0 10px 0 #D1483E;
+        border: 3px solid #D1483E;
+        user-select: none;
+      }
+
+      #btn-omikuji:hover {
+        opacity: 1;
+      }
+
+      #btn-omikuji:active {
+        margin-top: 36px;
+        box-shadow: 0 4px 0 #D1483E;
+      }
+
+    </style>
+
+
+  </head>
+  <body>
+    <div id="btn-omikuji">
+      おみくじ
+    </div>
+
+    <script>
+      (function() {
+        'use strict';
+
+        var btn = document.getElementById('btn-omikuji');
+
+        btn.addEventListener('click', function() {
+          var results = ['大吉', '中吉', '凶', '🌈🤩🌈なぽんたParty!!🌈🤩🌈', '💩',];
+
+          var n = Math.floor(Math.random() * results.length);
+            if (n === 3) {
+              btn.style.background = "yellow";
+              btn.style.color = "#00FF00";
+              btn.style.fontSize = "60px";
+
+            } else if(n === 4) {
+              btn.style.background = "#CD853F";
+              btn.style.fontSize = "300px";
+            } else {
+              btn.style.background = "#EF454A";
+              btn.style.color = "white";
+              btn.style.fontSize = "42px";
+            }
+
+          this.textContent = results[n];
+        });
+      })();
+
+    </script>
+  </body>
+</html>
