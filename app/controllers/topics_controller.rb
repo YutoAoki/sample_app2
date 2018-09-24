@@ -32,19 +32,21 @@ class TopicsController < ApplicationController
   end
 
   def index
-    # @search = Topic.ransack(params[:q])
-    # @search = nil unless params[:q]
-    #
-    # @search.any?
-    # @result = @search.result
+    @notice = ""
     # https://stackoverflow.com/questions/22159426/ransack-start-with-blank-index-no-results
     if params[:q] && params[:q].reject { |k, v| v.nil? }.present?
       # {"utf8"=>"✓", "q"=>{"topic_search_id_eq"=>"jimihen"}, "commit"=>"お墓を探す"}
+
       @search = Topic.search(params[:q])
       @result = @search.result
+      if @result.count != 1
+        @notice = "正しいお墓IDを入力してください。"
+        return false
+      end
     else
       @search = Topic.search
       @result = []
+
     end
 
   end

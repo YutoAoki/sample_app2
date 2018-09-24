@@ -11,10 +11,12 @@
       <%= f.submit "お墓を探す", class: 'btn btn-primary' %>
     <% end %>
 
-    <% if @result.any? %>
+    <% if @result.any? && @result.count == 1 %>
       <% @result.each do |r| %>
         <h3><%= link_to r.topic_search_id, topic_path(r) %></h3>
       <% end %>
+    <% elsif @notice.present? %>
+      <p><%= @notice %></p>
     <% end %>
   </div>
 
