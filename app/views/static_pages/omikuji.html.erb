@@ -11,12 +11,12 @@
 
       #btn-omikuji {
         margin: 30px auto 0;
-        width: 800px;
-        height: 800px;
+        width: 300px;
+        height: 300px;
         border-radius: 50%;
         background: #EF454A;
         text-align: center;
-        line-height: 800px;
+        line-height: 300px;
         color: #fff;
         font-size: 42px;
         font-weight: bold;
@@ -41,9 +41,14 @@
 
   </head>
   <body>
-    <div id="btn-omikuji">
-      おみくじ
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div id="btn-omikuji">
+          おみくじ
+        </div>
+      </div>
     </div>
+
 
     <script>
       (function() {
@@ -58,15 +63,16 @@
             if (n === 3) {
               btn.style.background = "yellow";
               btn.style.color = "#00FF00";
-              btn.style.fontSize = "60px";
-
+              btn.style.fontSize = "20px"
             } else if(n === 4) {
               btn.style.background = "#CD853F";
-              btn.style.fontSize = "300px";
+              btn.style.fontSize = "100px"
+
             } else {
               btn.style.background = "#EF454A";
               btn.style.color = "white";
-              btn.style.fontSize = "42px";
+              btn.style.fontSize = "70px"
+
             }
 
           this.textContent = results[n];
