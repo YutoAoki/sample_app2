@@ -29,14 +29,13 @@ class TopicsController < ApplicationController
     # @miles = Mile.find_by(topic_id: params[:id])
     # https://qiita.com/tsuchinoko_run/items/f3926caaec461cfa1ca3
     # find_byは最初の一つしか取り出さないので、each文でエラーになる。whereで配列として取り出す必要がある「。
+
   end
 
   def index
     @notice = ""
     # https://stackoverflow.com/questions/22159426/ransack-start-with-blank-index-no-results
     if params[:q] && params[:q].reject { |k, v| v.nil? }.present?
-      # {"utf8"=>"✓", "q"=>{"topic_search_id_eq"=>"jimihen"}, "commit"=>"お墓を探す"}
-
       @search = Topic.search(params[:q])
       @result = @search.result
       if @result.count != 1
@@ -46,7 +45,6 @@ class TopicsController < ApplicationController
     else
       @search = Topic.search
       @result = []
-
     end
 
   end

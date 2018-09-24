@@ -63,6 +63,9 @@
           <hr>
           <p><%= comment.user.name %>さんの記帳  （ 記帳日時：<%= comment.created_at.to_s %> ）</p>
           <p><%= simple_format(comment.contents) %></p>
+          <% if comment.user_id == current_user.id %>
+            <p><%= link_to "コメントを削除する", comment_path(comment), method: :delete %></p>
+          <% end %>
         <% end %>
         <p><%= link_to "過去の記帳を全て見る", comment_path(id: @topic.id) %></p>
       <% else %>

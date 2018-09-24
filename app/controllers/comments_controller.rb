@@ -25,6 +25,13 @@ class CommentsController < ApplicationController
     @comments = @comments_where.paginate(page: params[:page], per_page: 5)
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.delete
+    flash[:success] = "コメントを削除しました。"
+    redirect_back(fallback_location: root_path)
+  end
+
 
   private
     def logged_in_user
