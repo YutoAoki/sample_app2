@@ -4,7 +4,12 @@
       <%= image_tag @topic.topic_image %>
       <h4><%= simple_format(@topic.topic_bio) %></h4>
 
-      <%= link_to "お墓参りをする", miles_path(topic_id: @topic.id), method: :post, class: "btn btn-primary center-block" %>
+      <!-- JSでお参りありがとうを表示するdiv -->
+      <div id="mile_thanks"></div>
+
+
+
+      <%= link_to "お墓参りをする", miles_path(topic_id: @topic.id), method: :post, class: "btn btn-primary center-block", id: "mile_btn" %>
 
 
       <% if !@miles.nil? %>
@@ -78,3 +83,26 @@
     </div>
 
 </div>
+
+<script>
+  (function() {
+    'user strict';
+    var mile_thanks = document.getElementById('mile_thanks');
+    var mile_btn = document.getElementById('mile_btn');
+    var timerId;
+
+
+    mile_btn.addEventListener('click', function() {
+      timerId = setTimeout(closeMileThanks, 5000);
+      mile_thanks.classList.add('mile_complete');
+      mile_thanks.textContent = "〜〜お参りありがとう〜〜";
+    });
+
+    function closeMileThanks() {
+      mile_thanks.classList.remove('mile_complete');
+      mile_thanks.textContent = "";
+    }
+
+  })();
+
+</script>

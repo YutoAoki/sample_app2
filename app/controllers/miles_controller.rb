@@ -7,6 +7,7 @@ class MilesController < ApplicationController
     mile.topic_id = params[:topic_id]
     if mile.save
       flash[:success] = "お墓参りをしました。"
+      sleep(5)
       redirect_to topic_path(params[:topic_id])
     else
       flash.now[:danger] = "お参りをやり直してください。"
@@ -17,7 +18,7 @@ class MilesController < ApplicationController
   def show
     @miles_where = Mile.where(topic_id: params[:id])
     @miles = @miles_where.paginate(page: params[:page], per_page: 10)
-    
+
 
   end
 
