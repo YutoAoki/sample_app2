@@ -1,11 +1,12 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3 col-xs-12">
       <h1><%= @topic.topic_name %></p>
+
       <%= image_tag @topic.topic_image %>
+      <div id="mile_thanks"></div>
+
       <h4><%= simple_format(@topic.topic_bio) %></h4>
 
-      <!-- JSでお参りありがとうを表示するdiv -->
-      <div id="mile_thanks"></div>
 
 
 
@@ -82,6 +83,10 @@
       <p>このお墓の管理者：<%= link_to @owner.name, user_path(@owner) %></p>
     </div>
 
+    <!-- <div id="pos" style="position:fixed; right:5px; bottom:5px;"></div> -->
+    <div id="back-to-top" style="position:fixed; right: 20px; bottom: 20px;">
+      <h4><a href="#" style="background:black; color: white; font-weight:bold;">△このページのトップへ△</a></h4>
+    </div>
 </div>
 
 <script>
@@ -96,6 +101,7 @@
       timerId = setTimeout(closeMileThanks, 5000);
       mile_thanks.classList.add('mile_complete');
       mile_thanks.textContent = "〜〜お参りありがとう〜〜";
+      window.scrollTo(0, 180);
     });
 
     function closeMileThanks() {
@@ -104,5 +110,39 @@
     }
 
   })();
+
+
+    $(function() {
+
+      //#back-to-topを消す
+      $('#back-to-top').hide();
+
+      //スクロールが十分にされる＝back-to-topを表示、、、スクロールが戻ったら非表示
+      $(window).scroll(function() {
+        $('#pos').text($(this).scrollTop());
+        if ($(this).scrollTop() > 60) {
+          $('#back-to-top').fadeIn(500);
+        } else {
+          $('#back-to-top').fadeOut(500);
+        }
+      });
+
+      // //back-to-topがクリックされたら上に戻る。
+      $('#back-to-top').click(function() {
+        $('html', 'body').animate({
+          scrollTop:400
+        }, 1000);
+        // return false;
+      });
+
+      // $('#mile_btn').click(function() {
+      //   $('html', 'body').animate({
+      //     scrollTop:150
+      //   }, 500);
+      //   // return false;
+      // });
+
+    });
+
 
 </script>
