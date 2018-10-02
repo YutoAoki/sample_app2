@@ -7,6 +7,8 @@
         <p><%= @approved.count %>件のお墓に登録しています。</p>
         <% @approved.each do |app| %>
           <p><%= link_to app.topic.topic_name, topic_path(app.topic_id) %></p>
+          <p>お墓を検索しましょう。</p>
+          <%= link_to "お墓を検索",topics_path, class: "btn btn-success btn-xs btn-block" %>
         <% end %>
       <% else %>
         <p>お墓を検索しましょう。</p>

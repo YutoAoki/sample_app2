@@ -10,7 +10,7 @@
 
 
 
-      <%= link_to "お墓参りをする", miles_path(topic_id: @topic.id), method: :post, class: "btn btn-primary center-block", id: "mile_btn" %>
+      <%= link_to "お墓参りをする", miles_path(topic_id: @topic.id), method: :post, class: "btn btn-success center-block btn-lg", id: "mile_btn" %>
 
 
       <% if !@miles.nil? %>
@@ -24,7 +24,7 @@
 
 
 
-    <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-sample">
+    <button class="btn btn-warning btn-block btn-lg" data-toggle="modal" data-target="#modal-sample">
       記帳をする
     </button>
 
