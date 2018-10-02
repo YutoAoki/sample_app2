@@ -32,7 +32,7 @@ p {
 // universal
 
 body {
-  padding-top: 60px;
+  padding-top: 51px;
 }
 //
 section {
@@ -89,7 +89,7 @@ footer ul li {
 
 // home
 
-.top-hero-wrapper {
+#top-hero-wrapper {
   width: 100vw;
   height: 100vh;
   background-image: image-url('top-background.jpg');
@@ -97,12 +97,16 @@ footer ul li {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  background-attachment: fixed;
   background-color: rgba(0,0,0,0.0);
+
+
 
   h1 {
     font-size: 100px;
     letter-spacing: 3px;
     color: black;
+    margin-top: 100px;
   }
 
   h2 {
@@ -110,8 +114,25 @@ footer ul li {
     padding-bottom: 50px;
     color: black;
   }
-
 }
+
+#login-btn, #signup-btn {
+  margin-bottom: 10px;
+  display: none;
+}
+
+
+.top-card {
+  background: white;
+  opacity: 0.7;
+  border: 2px black solid;
+  padding: 20px;
+  margin-right: 5px;
+  border-radius: 20px;
+  height: 200px;
+}
+
+
 
 #main-title {
   display: none;
@@ -121,9 +142,14 @@ footer ul li {
   display: none;
 }
 
-.top-hero-container {
-  padding-top: 60px;
+#top-hero-container {
+  margin-top: 0;
 
+}
+
+#topcard-wrapper {
+  margin: 60px 0 auto;
+  display: none;
 }
 
 

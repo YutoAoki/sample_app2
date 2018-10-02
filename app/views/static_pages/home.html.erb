@@ -1,28 +1,54 @@
-<div class="top-hero-wrapper text-center">
-  <div class="container top-hero-container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1 id="main-title">HAKAMILEへようこそ</h1>
+<% if logged_in? %>
+  <%= render 'shared/mypage_show' %>
+<% else %>
 
-        <h2 id="sub-title">「HAKAMILE」はオンライン墓地のウェブサービスです。</h2>
 
-        <% if logged_in? %>
-          <%= link_to "MyPageへ", user_path(current_user), class: "btn btn-lg btn-primary" %>
-        <% else %>
-          <%= link_to "HAKAMILE会員登録", signup_path, class: "btn btn-lg btn-primary" %>
-        <% end %>
+  <div id="top-hero-wrapper">
+    <div class="container text-center" id="top-hero-container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 id="main-title">HAKAMILEへようこそ</h1>
+
+          <h2 id="sub-title">「HAKAMILE」はオンライン墓地のウェブサービスです。</h2>
+
+          <div class="col-md-6 col-md-offset-3">
+            <%= link_to "ログイン", login_path, class: "btn btn-lg btn-block btn-warning", id: "login-btn" %>
+
+            <%= link_to "会員登録", signup_path, class: "btn btn-lg btn-block btn-primary", id: "signup-btn" %>
+          </div>
+        </div>
       </div>
+      <div class="row text-center">
+        <div class="" id="topcard-wrapper">
+          <div class="col-md-4 col-md-offset-2 top-card">
+            <p style="font-weight:bold;font-size:16px;">HAKAMILEとは？</p>
+            <p>オンラインにお墓を作り、お参りができます。</p>
+            <p>お墓ページに入るには管理者の承認が必要です。</p>
+            <p>完全会員制となっています。</p>
+          </div>
 
+          <div class="col-md-4 top-card">
+            <p style="font-weight:bold;font-size:16px;">機能</p>
+            <p>会員登録／ログイン</p>
+            <p>お墓を検索し、お墓IDを入力。訪問者申請／承認</p>
+            <p>お墓参り、記帳</p>
+          </div>
+        </div>
+      </div>
     </div>
-
   </div>
-</div>
+
+
+<% end %>
 
 <script>
-  // $("#main-title").css("color","red");
-
   $(function() {
+
     $('#main-title').fadeIn(1500);
     $('#sub-title').fadeIn(1500);
+    $('#login-btn').fadeIn(2000);
+    $('#signup-btn').fadeIn(2000);
+    $('#topcard-wrapper').fadeIn(2000);
+
   });
 </script>
