@@ -6,21 +6,13 @@ RSpec.describe Topic, type: :model do
 
 
   it "is valid with correct input" do
-    user = User.create(
-      name: "yuto",
-      email: "yuto@gmail.com",
-      password: "yuto1216"
-    )
-
-    test_topic = user.topics.build(
-      topic_name: "お墓の名前",
-      topic_search_id: "testtopics",
-      topic_bio: "test haka",
-      topic_image: image
-    )
-
-    test_topic.valid?
-    expect(test_topic).to be_valid
+    user = FactoryBot.create(:user)
+    test_topic = FactoryBot.create(:topic)
+    expect(test_topic.valid?).to be true
+    # test_topic.valid?
+    # expect(test_topic).to be_valid
+    test_topic2 = FactoryBot.create(:topic)
+    expect(test_topic2.valid?).to be true
   end
 
   it "is invalid with a duplicate topic_search_id" do

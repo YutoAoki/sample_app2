@@ -1,18 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  it "has a valid factory" do
+    expect(FactoryBot.build(:user)).to be_valid
+  end
+
   it "is valid with a name, email, password" do
-    user = User.new(
-      name: "Yuuuto",
-      email: "yuto@gmail.com",
-      password: "yuto1216",
-    )
+    user = FactoryBot.create(:user)
+    p user
     expect(user).to be_valid
   end
 
   it "is invalid without a name" do
-    user = User.new(name: nil)
+    user = FactoryBot.build(:user, name: nil)
     # expect(user.valid?).to_not be_valid
+    p user
     user.valid?
     expect(user.errors[:name]).to include("を入力してください")
   end
@@ -55,5 +57,20 @@ RSpec.describe User, type: :model do
     user.valid?
     expect(user.errors[:password]).to include("は6文字以上で入力してください")
   end
+
+  it "can remember user digest & token" do
+    user = FactoryBot.create(:user)
+    user.remember
+    token = user.remember_token
+    expect(user.authenticated?(token)).to be true
+  end
+
+  it "is create valid 2 users" do
+    user1 = FactoryBot.create(:user)
+    p "user1 : #{user1.email}"
+    user2 = FactoryBot.create(:user)
+    p "user2 : #{user2.email}"
+  end
+
 
 end
