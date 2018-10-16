@@ -90,7 +90,8 @@ class TopicsController < ApplicationController
       @topic = Topic.find(params[:id])
       unless @topic.user_id == current_user.id
         flash[:danger] = "管理者のみが入れます。"
-        redirect_to user_path(current_user)
+        redirect_to topic_path(@topic)
+        # user_path(current_user)
       end
     end
 
